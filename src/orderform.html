@@ -1,0 +1,60 @@
+
+
+<template>
+  <section class="au-animate">
+		<h2>${heading}</h2>
+
+		<form role="form" submit.delegate="submit()">
+
+			<div id="sku-container" class="span4">
+				<div class="control-group">
+					<label for="sku-input">SKU: </label>
+					<input type="text" id="sku-input" name="sku-input" class="form-control">
+				</div>
+
+				<div class="control-group">
+					<label for="qty-input">QTY: </label>
+					<input type="number" id="qty-input" name="qty-input" class="form-control">
+				</div>
+
+				<button type="submit" id="add-sku" class="btn btn-block btn-large btn-inverse">
+					Add to Order
+				</button>
+			</div>
+
+			<div id="cart-conatiner" class="span8">
+				<div id="notice" class="alert alert-info">Add an item to order it.</div>
+				<item class="item" repeat.for="item of items | keys">
+
+					<div id="${item.itemCounter}" class="list-group-item" >
+						<input type="hidden" name="sku-${item.itemCounter}" id="sku-${item.itemCounter}" value="${item.sku}">
+						<button type="button" class="btn btn-danger list-group-item-remove pull-right" data-remove="order-row">×</button>
+						<div class="media">
+							<div class="media-body">
+								<div class="row-fluid">
+									<div class="span8">
+										<small>${$parent.items[item].sku}</small>
+										<div class="media-heading"><b>${item.skuName}</b></div>
+										
+										<p>
+											Price: $<span class="product-price">${item.itemPrice}</span> /
+											Subtotal: <b>$<span class="product-subtotal">${item.itemSubTotal}</span></b>
+										</p>
+									</div>
+									<div class="span4">
+										<label for="qty-${item.itemCounter}">QTY</label>
+										<div class="qty-control input-append input-prepend">
+											<input type="number" class="qty-input" name="qty-${item.itemCounter}" id="qty-${item.itemCounter}" value="${item.qty}" min="1">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			    </item>
+			</div>
+			<input type="hidden" id="sku-counter" value="1">
+		</form>
+	</section>
+</template>
+
