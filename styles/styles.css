@@ -200,12 +200,10 @@ div.au-stagger {
     margin-bottom: 30px;
 }
 
-.item {
-  display:none;
-}
 
 .cart-line {
     margin-bottom: 10px !important;
+    display: none;
 }
 
 /* Order FOrm  END*/

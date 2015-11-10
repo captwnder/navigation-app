@@ -10,33 +10,34 @@ export class orderform {
 	skuName='';
 	skuPrice='';
 	itemSubTotal='';
-	itemCounter=0;
+	itemCounter=1;
 
 	items = [];
 
-	itemCounter = $('#sku-counter').val();
-	itemCounter++
-	$('#sku-counter').val(itemCounter);
+
+	
 
 	submit(){
+
 		this.items.push({
 			'sku': $('#sku-input').val(),
-			'qty': 1, //$('#qty-input').val(),
-			'skuName': 'Test Product Name #',
+			'qty': $('#qty-input').val(),
+			'skuName': 'Test Product Name #' + this.itemCounter,
 			'skuPrice': 45.75,
-			'itemSubTotal': 45.85 * 1 //$('#qty-input').val(),
-			'itemCounter' : itemCounter
+			'itemSubTotal': 45.85 * $('#qty-input').val(),
+			'itemCounter' : this.itemCounter++
 		});
 
 		console.log(this.items);
 
+
 		$('#notice').hide();
-		$('.item').show();
 
 		$('#sku-input').val('').focus();
 		$('#qty-input').val('');
 
-
+		$('.cart-line').show();
+		$('#skuCounter').val(this.itemCounter);
 	}
 
 }
