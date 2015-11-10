@@ -10,25 +10,23 @@ export class orderform {
 	skuName='';
 	skuPrice='';
 	itemSubTotal='';
-	itemCounter='1';
+	itemCounter=0;
 
-	items = [{
-      // 'sku':'',
-      // qty:'',
-      // skuName:'',
-      // skuPrice:'',
-      // itemSubTotal:'',
-      // itemCounter: '0'
-   }];
+	items = [];
+
+	itemCounter = $('#sku-counter').val();
+	itemCounter++
+	$('#sku-counter').val(itemCounter);
 
 	submit(){
-		this.items.push([{
+		this.items.push({
 			'sku': $('#sku-input').val(),
 			'qty': 1, //$('#qty-input').val(),
 			'skuName': 'Test Product Name #',
 			'skuPrice': 45.75,
-			'itemSubTotal': 45.85 * 1 //$('#qty-input').val()
-		}]);
+			'itemSubTotal': 45.85 * 1 //$('#qty-input').val(),
+			'itemCounter' : itemCounter
+		});
 
 		console.log(this.items);
 
@@ -38,15 +36,7 @@ export class orderform {
 		$('#sku-input').val('').focus();
 		$('#qty-input').val('');
 
-		var itemCounter = $('#sku-counter').val();
-		itemCounter++
-		$('#sku-counter').val(itemCounter);
+
 	}
 
-}
-
-export class KeysValueConverter {
-  toView(value){
-    return Object.keys(value);
-  }
 }

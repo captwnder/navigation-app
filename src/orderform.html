@@ -24,16 +24,16 @@
 
 			<div id="cart-conatiner" class="span8">
 				<div id="notice" class="alert alert-info">Add an item to order it.</div>
-				<item class="item" repeat.for="item of items | keys">
+				<item class="item" repeat.for="item of items">
 
-					<div id="${item.itemCounter}" class="list-group-item" >
+					<div id="line-${item.itemCounter}" class="list-group-item cart-line" >
 						<input type="hidden" name="sku-${item.itemCounter}" id="sku-${item.itemCounter}" value="${item.sku}">
 						<button type="button" class="btn btn-danger list-group-item-remove pull-right" data-remove="order-row">×</button>
 						<div class="media">
 							<div class="media-body">
 								<div class="row-fluid">
 									<div class="span8">
-										<small>${$parent.items[item].sku}</small>
+										<small>${item.sku}</small>
 										<div class="media-heading"><b>${item.skuName}</b></div>
 										
 										<p>

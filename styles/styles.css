@@ -203,3 +203,9 @@ div.au-stagger {
 .item {
   display:none;
 }
+
+.cart-line {
+    margin-bottom: 10px !important;
+}
+
+/* Order FOrm  END*/
